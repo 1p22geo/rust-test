@@ -1,6 +1,11 @@
 target
 **/target
 *.txt
+*.pem
+*.key
+*.crt
+*.csr
+*.srl
 
 
 
