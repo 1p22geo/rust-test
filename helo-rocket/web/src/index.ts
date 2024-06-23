@@ -1,17 +1,13 @@
+import { echo_data } from "./echo_data";
+import { load_data } from "./load_data";
+
 async function main() {
-  let res = await fetch("/api/data")
-  let json = await res.json()
-
-  let data_res = await fetch("/api/data", {
-    "method": "POST",
-    "body": JSON.stringify(json)
-  })
-  let data_json = await data_res.json()
-
-  const version_span = document.querySelector("#ver") as HTMLSpanElement
+  const data = await load_data();
+  const echo = await echo_data(data);
+  const version_span = document.querySelector("#ver") as HTMLSpanElement;
   if (!version_span) {
-    throw Error("no version element")
+    throw Error("no version element");
   }
-  version_span.innerText = data_json.release
+  version_span.innerText = echo.release;
 }
-main()
+main();
