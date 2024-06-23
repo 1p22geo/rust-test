@@ -5,3 +5,6 @@
 genkey root
 gencsr app
 signkey app root
+
+cat app.key >>key.pem
+cat app.crt root.crt >>certs.pem
